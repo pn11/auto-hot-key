@@ -43,31 +43,63 @@
 isCtrlKeyWindow()
 {
     ; GVim
-    IfWinActive,ahk_class Vim
-    {
-        return 1
-    }
+;    IfWinActive,ahk_class Vim
+;    {
+;        return 1
+;    }
     ; Poderosa
-    IfWinActive,ahk_class WindowsForms10.Window.8.app.0.20f9772
-    {
-        return 1
-    }
-    ; Mingw
-    IfWinActive,ahk_class ConsoleWindowClass
-    {
-        return 1
-    }
+;    IfWinActive,ahk_class WindowsForms10.Window.8.app.0.20f9772
+;    {
+;        return 1
+;    }
+    ; Mingw, PowerShell
+;    IfWinActive,ahk_class ConsoleWindowClass
+;    {
+;        return 1
+;    }
     ; Tera Term
-    IfWinActive,ahk_class VTWin32
+    if WinActive("ahk_class VTWin32")
     {
         return 1
     }
-    ; Sygwin
-    IfWinActive,ahk_class mintty
+    ; Cygwin, Git-Bash, MSYS
+    if WinActive("ahk_class mintty")
     {
         return 1
     }
-
+    ; VScode
+    if WinActive("ahk_exe Code.exe")
+    {
+        return 1
+    }
+    ; PowerShell
+;    if WinActive("ahk_exe powershell.exe")
+;    {
+;        return 1
+;    }
+    ; PyCharm
+    if WinActive("ahk_exe pycharm64.exe")
+    {
+        return 1
+    }
+    ; IntelliJ IDEA
+    if WinActive("ahk_exe idea64.exe")
+    {
+        return 1
+    }
+    ; Hyper
+    if WinActive("ahk_exe Hyper.exe")
+    {
+        return 1
+    }
+    ; Boostnote
+    ; Boostnote は CodeMirror の Emacs mode があるが、
+    ; Yank とクリップボードが共有されないため不便なので、
+    ; AHK を使うことにする。
+;    if WinActive("ahk_exe Boostnote.exe")
+;    {
+;        return 1
+;    }
     Return 0
 }
 
