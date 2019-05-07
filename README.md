@@ -14,6 +14,13 @@
         - Boostenote は CodeMirror 由来の Emacs mode があるが、yank とクリップボードが共有されないため不便なので、無効化していない。
 - `IfWinActive,ahk_class` のような書き方は AHK のドキュメントで deprecated となっていたので、`if WinActive()` のような書き方に変えた。
 
+## 使い方
+
+- `as-mac-jis.ahk` か `as-mac-us.ahk` を AutoHotKey でコンパイルして、スタートアップフォルダにショートカットを置く。
+- コンパイルは AutoHotKey のコンテキストメニューをインストールしていれば右クリックからいけるが、コマンドラインでやる例は `compile.bat`
+- スタートアップフォルダは `open_startup_folder.bat` のように開ける。
+
+
 ## Reference
 
 - [AutoHotkeyでMac USキーボード完全互換を目指す](https://qiita.com/maoutokagura/items/7b64b17783a29f63b2c6)
