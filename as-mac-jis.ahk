@@ -1,5 +1,5 @@
-; å·¦ Ctrl ã®å‹•ä½œã‚’ Mac é¢¨ã«ã™ã‚‹ AutoHotkey ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
-; JIS ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ç‰ˆ
+; ¶ Ctrl ‚Ì“®ì‚ğ Mac •—‚É‚·‚é AutoHotkey ƒXƒNƒŠƒvƒg
+; JIS ƒL[ƒ{[ƒh”Å
 ;
 ; AutoHotkey: v1.1.22.07
 ; Author:     karakaram   http://www.karakaram.com/hhkb-pro2-windows-customize
@@ -10,22 +10,53 @@
 #InstallKeybdHook
 #UseHook
 
-; Ctrl+F ã§æ¤œç´¢ã¨ã‹ã¯ã‚„ã‚ŠãŸã„ãŸã‚ã€CapsLockã‚’ Emacs ç”¨ã«ä½¿ã†ã€‚
-; Shift ä»˜ãã®å‹•ä½œã¯æ›¸ãæ–¹ãŒåˆ†ã‹ã‚‰ãªã„ã®ã§ã‚ã¨ã§ã€‚
+; Ctrl+F ‚ÅŒŸõ‚Æ‚©‚Í‚â‚è‚½‚¢‚½‚ßACapsLock‚ğ Emacs —p‚Ég‚¤B
+; ‚»‚êˆÈŠO‚Í Ctrl-XXX ‚ğ‘—M‚·‚éB
+; œŠOƒAƒvƒŠ‚Ìê‡‚à Ctrl-XXX ‚ğ‘—MB
+; Shift + CapsLock + XXX ‚É‚à‘Î‰B
 
-; CapsLock ã®å‹•ä½œã‚’ Mac é¢¨ã«
-sc03A & a::switchKeyByWindow("{Home}", "^a")
-;+<^a::switchKeyByWindow("+{Home}", "+^a")
-sc03A & e::switchKeyByWindow("{End}", "^e")
-;+<^e::switchKeyByWindow("+{End}", "+^e")
-sc03A & f::switchKeyByWindow("{Right}", "^f")
-;+<^f::switchKeyByWindow("+{Right}", "+^f")
-sc03A & b::switchKeyByWindow("{Left}", "^b")
-;+<^b::switchKeyByWindow("+{Left}", "+^b")
-sc03A & p::switchKeyByWindow("{Up}", "^p")
-;+<^p::switchKeyByWindow("+{Up}", "^+p")
-sc03A & n::switchKeyByWindow("{Down}", "^n")
-;+<^n::switchKeyByWindow("+{Down}", "+^n")
+sc03A & a::
+If GetKeyState("Shift", "P")
+    switchKeyByWindow("+{Home}", "+^a")
+Else
+    switchKeyByWindow("{Home}", "^a")
+Return
+
+sc03A & e::
+If GetKeyState("Shift", "P")
+    switchKeyByWindow("+{End}", "+^e")
+Else
+    switchKeyByWindow("{End}", "^e")
+Return
+
+sc03A & f::
+If GetKeyState("Shift", "P")
+    switchKeyByWindow("+{Right}", "+^f")
+Else
+    switchKeyByWindow("{Right}", "^f")
+Return
+
+sc03A & b::
+If GetKeyState("Shift", "P")
+    switchKeyByWindow("+{Left}", "+^b")
+Else
+    switchKeyByWindow("{Left}", "^b")
+Return
+
+sc03A & p::
+If GetKeyState("Shift", "P")
+    switchKeyByWindow("+{Up}", "+^p")
+Else
+    switchKeyByWindow("{Up}", "^p")
+Return
+
+sc03A & n::
+If GetKeyState("Shift", "P")
+    switchKeyByWindow("+{Down}", "+^n")
+Else
+    switchKeyByWindow("{Down}", "^n")
+Return
+
 sc03A & o::switchKeyByWindow("{End}{Enter}", "^o")
 sc03A & h::switchKeyByWindow("{Backspace}", "^h")
 sc03A & d::switchKeyByWindow("{Delete}", "^d")
@@ -54,11 +85,56 @@ sc03A & .::send ^{.}
 
 sc03A & Space::send ^{Space}
 
+sc03A & Tab::
+If GetKeyState("Shift", "P")
+    send +^{Tab}
+Else
+    send ^{Tab}
+Return
+
+; Ctrl+` ‚Å VS code ‚Åƒ^[ƒ~ƒiƒ‹•\¦‚µ‚½‚¢‚ªA
+; IME ‚Éæ‚ç‚ê‚Ä‚µ‚Ü‚¤‚Ì‚Å‚¢‚Á‚»–³Œø‰»B
+^sc029:: send {}
+
+; CapsLock + `
+sc03A & sc029::
+If GetKeyState("Shift", "P")
+    send +^{sc029}
+Else
+    send {}
+Return
+
+sc03A & 1::send ^{1}
+sc03A & 2::send ^{2}
+sc03A & 3::send ^{3}
+sc03A & 4::send ^{4}
+sc03A & 5::send ^{5}
+sc03A & 6::send ^{6}
+sc03A & 7::send ^{7}
+sc03A & 8::send ^{8}
+sc03A & 9::send ^{9}
+sc03A & 0::send ^{0}
+
+sc03A & -::
+If GetKeyState("Shift", "P")
+    send +^{-}
+Else
+    send ^{-}
+Return
+
+sc03A & =::
+If GetKeyState("Shift", "P")
+    send +^{=}
+Else
+    send ^{=}
+Return
+
+
 ;----------------------------------------------------------------
-; Ctrl ã‚­ãƒ¼ã‚’é€ä¿¡ã™ã‚‹ Window ã‹ã©ã†ã‹ã‚’åˆ¤æ–­ã™ã‚‹
+; Ctrl ƒL[‚ğ‘—M‚·‚é Window ‚©‚Ç‚¤‚©‚ğ”»’f‚·‚é
 ;
-; return   1:å·®ã—æ›¿ãˆã‚’ç„¡åŠ¹ã«ã™ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
-;          0:å·®ã—æ›¿ãˆã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
+; return   1:·‚µ‘Ö‚¦‚ğ–³Œø‚É‚·‚éƒEƒBƒ“ƒhƒE
+;          0:·‚µ‘Ö‚¦‚ğ—LŒø‚É‚·‚éƒEƒBƒ“ƒhƒE
 ;----------------------------------------------------------------
 isCtrlKeyWindow()
 {
@@ -113,9 +189,9 @@ isCtrlKeyWindow()
         return 1
     }
     ; Boostnote
-    ; Boostnote ã¯ CodeMirror ã® Emacs mode ãŒã‚ã‚‹ãŒã€
-    ; Yank ã¨ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ãŒå…±æœ‰ã•ã‚Œãªã„ãŸã‚ä¸ä¾¿ãªã®ã§ã€
-    ; AHK ã‚’ä½¿ã†ã“ã¨ã«ã™ã‚‹ã€‚
+    ; Boostnote ‚Í CodeMirror ‚Ì Emacs mode ‚ª‚ ‚é‚ªA
+    ; Yank ‚ÆƒNƒŠƒbƒvƒ{[ƒh‚ª‹¤—L‚³‚ê‚È‚¢‚½‚ß•s•Ö‚È‚Ì‚ÅA
+    ; AHK ‚ğg‚¤‚±‚Æ‚É‚·‚éB
 ;    if WinActive("ahk_exe Boostnote.exe")
 ;    {
 ;        return 1
@@ -124,10 +200,10 @@ isCtrlKeyWindow()
 }
 
 ;----------------------------------------------------------------
-; Window ã«ã‚ˆã£ã¦é€ä¿¡ã™ã‚‹ã‚­ãƒ¼ã‚’æŒ¯ã‚Šåˆ†ã‘ã‚‹
+; Window ‚É‚æ‚Á‚Ä‘—M‚·‚éƒL[‚ğU‚è•ª‚¯‚é
 ;
-; defaultKey    ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§é€ä¿¡ã™ã‚‹ã‚­ãƒ¼
-; ctrlKey       Ctrlã‚’é€ä¿¡ã™ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã¨ãé€ä¿¡ã™ã‚‹ã‚­ãƒ¼
+; defaultKey    ƒfƒtƒHƒ‹ƒg‚Å‘—M‚·‚éƒL[
+; ctrlKey       Ctrl‚ğ‘—M‚·‚éƒEƒBƒ“ƒhƒE‚Ì‚Æ‚«‘—M‚·‚éƒL[
 ;----------------------------------------------------------------
 switchKeyByWindow(defaultKey, ctrlKey)
 {
