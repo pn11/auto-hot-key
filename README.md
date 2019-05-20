@@ -30,3 +30,4 @@
 - [ウィンドウ指定の方法 - AutoHotkey Wiki](http://ahkwiki.net/Window#Window_Spy_.E3.82.92.E5.88.A9.E7.94.A8.E3.81.97.E3.81.A6.E8.AA.BF.E6.9F.BB.E3.82.92.E8.A1.8C.E3.81.86)
 - [WinActive() / IfWinActive - Syntax & Usage | AutoHotkey](https://autohotkey.com/docs/commands/WinActive.htm)
 - [WinTitle & Last Found Window | AutoHotkey](https://autohotkey.com/docs/misc/WinTitle.htm)
+- [AutoHotkeyにおけるラベルの優先度と3キー同時押しの定義 - 情報科学屋さんを目指す人のメモ（FC2ブログ版）](http://did2.blog64.fc2.com/blog-entry-371.html)
