@@ -188,6 +188,16 @@ isCtrlKeyWindow()
     {
         return 1
     }
+    ; WSL
+    if WinActive("ahk_exe wsl.exe")
+    {
+        return 1
+    }
+    ; WindowsTerminal
+    if WinActive("ahk_exe WindowsTerminal.exe")
+    {
+        return 1
+    }
     ; Boostnote
     ; Boostnote は CodeMirror の Emacs mode があるが、
     ; Yank とクリップボードが共有されないため不便なので、
@@ -196,7 +206,7 @@ isCtrlKeyWindow()
 ;    {
 ;        return 1
 ;    }
-    Return 0
+    return 0
 }
 
 ;----------------------------------------------------------------
