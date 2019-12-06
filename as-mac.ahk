@@ -110,6 +110,11 @@ isCtrlKeyWindow()
 ;    {
 ;        return 1
 ;    }
+    ; TeamViewer
+    if WinActive("ahk_exe TeamViewer.exe")
+    {
+        return 1
+    }
     return 0
 }
 
