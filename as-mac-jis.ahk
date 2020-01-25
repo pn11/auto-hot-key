@@ -198,6 +198,21 @@ isCtrlKeyWindow()
     {
         return 1
     }
+    ; RLogin
+    if WinActive("ahk_exe RLogin.exe")
+    {
+        return 1
+    }
+    ; TeraTerm
+    if WinActive("ahk_exe ttermpro.exe")
+    {
+        return 1
+    }
+    ; PuTTY
+    if WinActive("ahk_exe putty.exe")
+    {
+        return 1
+    }
     ; Boostnote
     ; Boostnote は CodeMirror の Emacs mode があるが、
     ; Yank とクリップボードが共有されないため不便なので、

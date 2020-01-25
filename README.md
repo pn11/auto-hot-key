@@ -9,16 +9,19 @@
 - [karakaram/alt-ime-ahk](https://github.com/karakaram/alt-ime-ahk) から `IME.ahk`, `alt-ime-ahk.ahk` をコピー。
 - 無効化するアプリ追加。
     - IDE など、独自の方法で Emacs キーバインドにできるアプリでは無効化する。
-        - VScode, PyCharm, IntelliJ IDEA など。
+        - ターミナルアプリ、VScode, PyCharm, IntelliJ IDEA など。
         - Eclipse はウィンドウを判定する術がみつからなかったので無効化していない。(`if WinActive("ahk_exe javaw.exe")` のようにすると Java に関係ないはずのものまで動かなくなる？)
         - Boostenote は CodeMirror 由来の Emacs mode があるが、yank とクリップボードが共有されないため不便なので、無効化していない。
 - `IfWinActive,ahk_class` のような書き方は AHK のドキュメントで deprecated となっていたので、`if WinActive()` のような書き方に変えた。
+- `as-mac-jis.ahk` は CapsLock を Ctrl に割り当てるのではなく、CapsLock+何かのキーだと Emacs/Unix-Like な動きになり、Ctrl キーは Windows-Like に使えるようにしてある (C-c でコピーなど)。Mac の Ctrl と Cmd の使い心地に少し近づいた。
+    - 上記の「無効化するアプリ」上では CapsLock は Ctrl として動作する。
 
 ## 使い方
 
-- `as-mac-jis.ahk` か `as-mac-us.ahk` を AutoHotKey でコンパイルして、スタートアップフォルダにショートカットを置く。
+- `as-mac-jis.ahk` か `as-mac-us.ahk` を AutoHotKey でコンパイルして、スタートアップフォルダにショートカットを置く。(Win+R して `shell:startup` と入力すると開く。)
 - コンパイルは AutoHotKey のコンテキストメニューをインストールしていれば右クリックからいけるが、コマンドラインでやる例は `compile.bat`
 - スタートアップフォルダは `open_startup_folder.bat` のように開ける。
+- 無変換を左alt、変換、カタカナを右alt に割り当てるには ChgKey を使う。
 
 
 ## Reference
