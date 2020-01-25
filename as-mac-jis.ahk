@@ -135,6 +135,7 @@ Return
 ;
 ; return   1:差し替えを無効にするウィンドウ
 ;          0:差し替えを有効にするウィンドウ
+; https://www.autohotkey.com/docs/commands/WinActive.htm
 ;----------------------------------------------------------------
 isCtrlKeyWindow()
 {
@@ -199,17 +200,13 @@ isCtrlKeyWindow()
         return 1
     }
     ; RLogin
-    if WinActive("ahk_exe RLogin.exe")
-    {
-        return 1
-    }
-    ; TeraTerm
-    if WinActive("ahk_exe ttermpro.exe")
+    SetTitleMatchMode 1 ; 前方一致 https://www.autohotkey.com/docs/commands/SetTitleMatchMode.htm
+    if WinActive("RLogin")
     {
         return 1
     }
     ; PuTTY
-    if WinActive("ahk_exe putty.exe")
+    if WinActive("ahk_class PuTTY")
     {
         return 1
     }
